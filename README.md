@@ -12,9 +12,9 @@ Put the pdf in the local directory.
 
 Then type:
 
-./run.sh <pdfname.pdf>
+./run.sh pdfname.pdf
 
-It will output a file called <pdfname.pdf_captions.txt> with all your captions.
+It will output a file called pdfname.pdf_captions.txt with all your captions.
 
 # how to install
 Please install pdfminer first. (for instance: easy_install pdfminer)
