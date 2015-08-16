@@ -21,13 +21,7 @@ with open(target_file) as f:
         if (waiting_for_caption_to_end and len(line_words) >= 1):
             if (DEBUG): print(debug_string+"upper")
             caption_lines.append(line.replace("\n",""))
-            if (line_words[len(line_words)-1].endswith(' ') == True):
-                if (line_words[len(line_words)-2].endswith('.') == False):
-                    waiting_for_caption_to_end = False
-                    print(output_string+" ".join(caption_lines).replace("\n","").replace("- ","").replace("  "," "))
-                    caption_lines = []
-                    if (OUTPUT): print(output_string) #and print a new line
-            elif (line_words[len(line_words)-1].endswith('.') == True):
+            if (line_words[len(line_words)-1].endswith('.') == True):
                     waiting_for_caption_to_end=False
                     print(output_string+" ".join(caption_lines).replace("\n","").replace("- ","").replace("  "," "))
                     caption_lines = []
@@ -41,10 +35,7 @@ with open(target_file) as f:
                     for word in line_words[2:]:
                         caption.append(word)
                     caption_lines.append(" ".join(caption))
-                    if (line_words[len(line_words)-1].endswith(' ') == True):
-                        if (line_words[len(line_words)-2].endswith('.') == False):
-                            waiting_for_caption_to_end = True
-                    elif (line_words[len(line_words)-1].endswith('.') == False):
+                    if (line_words[len(line_words)-1].endswith('.') == False):
                         waiting_for_caption_to_end = True
                     elif (OUTPUT): 
                         print(output_string+" ".join(caption_lines).replace("\n",""))
