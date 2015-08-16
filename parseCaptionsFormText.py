@@ -15,9 +15,9 @@ caption_lines = []
 captions_captured = []
 figure_number = ""
 
+#determine what is a caption and what is not
 with open(target_file) as f:
     for line in f:
-        #print line
         line_words = line.split()
         if (DEBUG): print(debug_string+"".join(line_words))
         if (waiting_for_caption_to_end and len(line_words) >= 1):
@@ -28,15 +28,12 @@ with open(target_file) as f:
                     pair = [figure_number,caption_text]
                     captions_captured.append(pair)
                     waiting_for_caption_to_end=False
-                    #print(output_string+" ".join(caption_lines).replace("\n","").replace("- ","").replace("  "," "))
                     caption_lines = []
-                    #if (OUTPUT): print(output_string) #and print a new line
         elif (len(line_words)>=2):
             if (DEBUG): print(debug_string+"lower")
             figure = (line_words[0]).lower() #only first word of each sentence should be "Figure"
             figure_number = line_words[1].lower()
             if (figure in figure_labels and figure_number.endswith(':')):
-                    #if (OUTPUT): print(output_string+figure+" "+figure_number[:-1])
                     figure_number = output_string+figure+" "+figure_number[:-1]
                     for word in line_words[2:]:
                         caption.append(word)
@@ -45,10 +42,9 @@ with open(target_file) as f:
                         waiting_for_caption_to_end = True
                     elif (OUTPUT): 
                         caption_text = output_string+" ".join(caption_lines).replace("\n","")
-                        #print(output_string+" ".join(caption_lines).replace("\n",""))
                         pair = [figure_number,caption_text]
                         captions_captured.append(pair)
-                        #print(output_string)
+                        caption_lines = []
                     caption = []
 
 #lame determining of figure count on the paper
