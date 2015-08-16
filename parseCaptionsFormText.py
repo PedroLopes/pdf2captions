@@ -66,5 +66,5 @@ while (iterator <= max_number):
         if (int(pair[0].replace("figure ", "")) == iterator):
             print(pair[0])
             print(pair[1])
-            print()
+            print("")
     iterator+=1
