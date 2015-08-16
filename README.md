@@ -1,5 +1,8 @@
 # pdf2captions
 Outputs a list of captions from a target pdf, done for UIST 2015 accessibility options. 
+This was made for UIST/CHI templates and might work with others however there are very strict (perhaps lame) assumptions:
+1. a caption starts with "Figure" followed by whitespace and a number (digits) and a ":" and some text.
+2. The caption ends IMPERATIVELY on a period ("."). If not, it will continue until a period is found.
 
 # how to run
 Put the pdf in the local directory. 
